@@ -1,0 +1,1116 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+%\usepackage{bera}% optional: just to have a nice mono-spaced font
+\usepackage{listings}
+\usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Introducción a GraphQL
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+REST es un estilo de arquitectura que define un conjunto de restricciones
+ a usarse en la creación de Servicios Web.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Permite la comunicación entre distintos sistemas.
+\end_layout
+
+\begin_layout Itemize
+Usa estándares (HTTP, XML, JSON, etc.), lo que permitió que los desarrolladores
+ lo adopten rápidamente.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+En general, REST se usa sobre HTTP.
+ Facilita la implementación de APIs, desacoplando el servidor y el cliente.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Emplea los principales métodos HTTP: GET, POST, PUT, DELETE, PATCH.
+\end_layout
+
+\begin_layout Itemize
+El intercambio de datos se suele realizar en formato JSON o XML.
+\end_layout
+
+\begin_layout Itemize
+Se emplean los códigos HTTP estándar en la respuesta.
+ Por ejemplo: 200 para una petición correcta, 404 es 
+\begin_inset Quotes fld
+\end_inset
+
+Not Found
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GET 
+\begin_inset space \quad{}
+\end_inset
+
+ /movies/
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json,firstnumber=1]
+\end_layout
+
+\begin_layout Plain Layout
+
+{"movies": 
+\end_layout
+
+\begin_layout Plain Layout
+
+   [{"name": "Titanic",
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\begin_inset Quotes fld
+\end_inset
+
+id
+\begin_inset Quotes frd
+\end_inset
+
+: 217360881,
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\begin_inset Quotes fld
+\end_inset
+
+director
+\begin_inset Quotes frd
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+James Cameron
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+     "cast": [{
+\begin_inset Quotes fld
+\end_inset
+
+name
+\begin_inset Quotes frd
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+Leonardo DiCaprio
+\begin_inset Quotes frd
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+age
+\begin_inset Quotes frd
+\end_inset
+
+: 45,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+awards
+\begin_inset Quotes frd
+\end_inset
+
+: [...]},
+\end_layout
+
+\begin_layout Plain Layout
+
+              {
+\begin_inset Quotes fld
+\end_inset
+
+name
+\begin_inset Quotes frd
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+Kate Winslet
+\begin_inset Quotes frd
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+age
+\begin_inset Quotes frd
+\end_inset
+
+: 44,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+awards
+\begin_inset Quotes frd
+\end_inset
+
+: [...]}]},
+\end_layout
+
+\begin_layout Plain Layout
+
+    {"name": "Kill Bill",
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\begin_inset Quotes fld
+\end_inset
+
+id
+\begin_inset Quotes frd
+\end_inset
+
+: 184766018,
+\end_layout
+
+\begin_layout Plain Layout
+
+      ...}
+\end_layout
+
+\begin_layout Plain Layout
+
+   ]} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GET 
+\begin_inset space \quad{}
+\end_inset
+
+ /movies/<id>/
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json,firstnumber=1]
+\end_layout
+
+\begin_layout Plain Layout
+
+{"movie": 
+\end_layout
+
+\begin_layout Plain Layout
+
+   {"name": "Kill Bill",
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\begin_inset Quotes fld
+\end_inset
+
+id
+\begin_inset Quotes frd
+\end_inset
+
+: 184766018,
+\end_layout
+
+\begin_layout Plain Layout
+
+     
+\begin_inset Quotes fld
+\end_inset
+
+director
+\begin_inset Quotes frd
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+Quentin Tarantino
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+     "cast": [{
+\begin_inset Quotes fld
+\end_inset
+
+name
+\begin_inset Quotes frd
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+Uma Thurman
+\begin_inset Quotes frd
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+age
+\begin_inset Quotes frd
+\end_inset
+
+: 49,
+\end_layout
+
+\begin_layout Plain Layout
+
+               
+\begin_inset Quotes fld
+\end_inset
+
+awards
+\begin_inset Quotes frd
+\end_inset
+
+: [...]}
+\end_layout
+
+\begin_layout Plain Layout
+
+             ]
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Características:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Arquitectura cliente-servidor.
+\end_layout
+
+\begin_layout Itemize
+El identificador de cada recurso es la URI.
+\end_layout
+
+\begin_layout Itemize
+Stateless: la petición contiene toda la información necesaria para ejecutarla.
+\end_layout
+
+\begin_layout Itemize
+HATEOAS: en la respuesta se retornan links a otros recursos asociados.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Ventajas de implementar un API con REST:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Desacople entre cliente y servidor, lo que permite que evolucionen independiente
+mente.
+\end_layout
+
+\begin_layout Itemize
+Escalabilidad: en sistemas distribuidos, cualquier nodo puede responder
+ a una petición ya que no mantienen información de sesión durante la interacción.
+\end_layout
+
+\begin_layout Itemize
+Emplea estándares como HTTP, JSON y XML.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+REST: Representational State Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Desventajas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Overfetching.
+\end_layout
+
+\begin_layout Itemize
+Underfetching.
+\end_layout
+
+\begin_layout Itemize
+Múltiples queries para obtener los datos.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introducción a GraphQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+GraphQL es un lenguaje de consulta y manipulación pensado para comunicar
+ clientes y servidores.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Desarrollado inicialmente por Facebook.
+\end_layout
+
+\begin_layout Itemize
+Provee un enfoque y herramientas para desarrollar APIs web.
+\end_layout
+
+\begin_layout Itemize
+Permite a los clientes definir la estructura de datos que los mismos requieran.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introducción a GraphQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+GraphQL permite la consulta de datos mediante un enfoque 
+\emph on
+declarativo
+\emph default
+.
+ Un cliente específica exactamente qué datos desea obtener del servidor.
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+A diferencia de REST, donde se exponen múltiples endpoints que retornan
+ una estructura de datos fija, GraphQL define un único endpoint.
+ En dicho endpoint responde con la información solicitada por el cliente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Schema Definition Language (SDL)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphQL posee su propio sistema de tipos que permite definir el esquema
+ de un API.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Employee {
+\end_layout
+
+\begin_layout Plain Layout
+
+   name: String
+\end_layout
+
+\begin_layout Plain Layout
+
+   age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Se pueden expresar relaciones entre los tipos definidos.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Department {
+\end_layout
+
+\begin_layout Plain Layout
+
+   name: String
+\end_layout
+
+\begin_layout Plain Layout
+
+   employees: [Employee]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Queries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Ejemplo de una consulta básica:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  allEmployees {
+\end_layout
+
+\begin_layout Plain Layout
+
+     name
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  "allEmployees": 
+\end_layout
+
+\begin_layout Plain Layout
+
+      [{"name": "Cecilia"},
+\end_layout
+
+\begin_layout Plain Layout
+
+       {"name": "Lucas"},
+\end_layout
+
+\begin_layout Plain Layout
+
+       {"name": "Javier"}]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Queries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Y la edad de cada empleado? Con GraphQL, el cliente puede consultar solamente
+ los fields que desee obtener!
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+En GraphQL, mediante una Query, los clientes puede obtener datos del servidor
+ de una forma más flexible que con REST.
+\end_layout
+
+\end_body
+\end_document
