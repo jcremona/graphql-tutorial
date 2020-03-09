@@ -1112,5 +1112,1593 @@ En GraphQL, mediante una Query, los clientes puede obtener datos del servidor
  de una forma más flexible que con REST.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Argumentos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Volvamos al ejemplo de las películas.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query { 	
+\end_layout
+
+\begin_layout Plain Layout
+
+    movie(name:"Titanic"){     
+\end_layout
+
+\begin_layout Plain Layout
+
+       name     
+\end_layout
+
+\begin_layout Plain Layout
+
+       releaseDate   
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{    
+\end_layout
+
+\begin_layout Plain Layout
+
+   "movie": {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "name": "Titanic",       
+\end_layout
+
+\begin_layout Plain Layout
+
+       "releaseDate": "05-02-1998"
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Argumentos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Mejor aún, cada field puede tener sus propios argumentos.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query { 	
+\end_layout
+
+\begin_layout Plain Layout
+
+    movie(name:"Titanic"){     
+\end_layout
+
+\begin_layout Plain Layout
+
+       name     
+\end_layout
+
+\begin_layout Plain Layout
+
+       releaseDate(format: ONLY_YEAR)
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{    
+\end_layout
+
+\begin_layout Plain Layout
+
+   "movie": {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "name": "Titanic",       
+\end_layout
+
+\begin_layout Plain Layout
+
+       "releaseDate": "1998"
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Alias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Cuando consultamos un mismo field, usamos un alias para renombrar el resultado.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query {
+\end_layout
+
+\begin_layout Plain Layout
+
+  titanic: movie(name:"Titanic"){     
+\end_layout
+
+\begin_layout Plain Layout
+
+          name
+\end_layout
+
+\begin_layout Plain Layout
+
+          releaseDate
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  wws: movie(name:"The Wolf of Wall Street"){
+\end_layout
+
+\begin_layout Plain Layout
+
+          name
+\end_layout
+
+\begin_layout Plain Layout
+
+          releaseDate
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Alias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+   "titanic": {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "name": "Titanic",
+\end_layout
+
+\begin_layout Plain Layout
+
+       "releaseDate": "05-02-1998"
+\end_layout
+
+\begin_layout Plain Layout
+
+   },
+\end_layout
+
+\begin_layout Plain Layout
+
+   "wws": {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "name": "The Wolf of Wall Street",
+\end_layout
+
+\begin_layout Plain Layout
+
+       "releaseDate": "25-12-2013"
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fragments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos usar 
+\emph on
+fragments
+\emph default
+ para evitar repetir campos.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query {
+\end_layout
+
+\begin_layout Plain Layout
+
+  titanic: movie(name:"Titanic"){     
+\end_layout
+
+\begin_layout Plain Layout
+
+       ...movieFields
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  wws: movie(name:"The Wolf of Wall Street"){
+\end_layout
+
+\begin_layout Plain Layout
+
+       ...movieFields
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fragment movieFields on Movie {   
+\end_layout
+
+\begin_layout Plain Layout
+
+    name
+\end_layout
+
+\begin_layout Plain Layout
+
+    releaseDate
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query ($name: String) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  movie(name: $name) {     
+\end_layout
+
+\begin_layout Plain Layout
+
+    name
+\end_layout
+
+\begin_layout Plain Layout
+
+    releaseDate
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Cómo se relacionan las 
+\emph on
+queries 
+\emph default
+mostradas recientemente con el sistema de tipos y los esquemas?
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Query {
+\end_layout
+
+\begin_layout Plain Layout
+
+    movies: [Movie]
+\end_layout
+
+\begin_layout Plain Layout
+
+    movie(name: String!): Movie
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+type Movie {
+\end_layout
+
+\begin_layout Plain Layout
+
+    name: String!        # non-nullable
+\end_layout
+
+\begin_layout Plain Layout
+
+    releaseDate: String
+\end_layout
+
+\begin_layout Plain Layout
+
+    director: Director
+\end_layout
+
+\begin_layout Plain Layout
+
+    actors: [Actor]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos: Listas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Director {
+\end_layout
+
+\begin_layout Plain Layout
+
+    fullName: String!
+\end_layout
+
+\begin_layout Plain Layout
+
+    age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+type Actor {
+\end_layout
+
+\begin_layout Plain Layout
+
+    fullName: String!
+\end_layout
+
+\begin_layout Plain Layout
+
+    age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+    appearsIn: [Movie]   
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Queries: consultando objetos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query { 	
+\end_layout
+
+\begin_layout Plain Layout
+
+    movie(name:"Titanic"){     
+\end_layout
+
+\begin_layout Plain Layout
+
+       name     
+\end_layout
+
+\begin_layout Plain Layout
+
+       director {
+\end_layout
+
+\begin_layout Plain Layout
+
+           fullName
+\end_layout
+
+\begin_layout Plain Layout
+
+       }
+\end_layout
+
+\begin_layout Plain Layout
+
+} }
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{    
+\end_layout
+
+\begin_layout Plain Layout
+
+   "movie": {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "name": "Titanic",       
+\end_layout
+
+\begin_layout Plain Layout
+
+       "director": {
+\end_layout
+
+\begin_layout Plain Layout
+
+            "fullName": "James Cameron"
+\end_layout
+
+\begin_layout Plain Layout
+
+       }
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos: Scalars
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+GraphQL viene con un conjunto de tipos por defecto:
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+String
+\end_layout
+
+\begin_layout Itemize
+Int
+\end_layout
+
+\begin_layout Itemize
+Float
+\end_layout
+
+\begin_layout Itemize
+Boolean
+\end_layout
+
+\begin_layout Itemize
+ID
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos: Enums
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphQL permite definir tipos enumerados.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+enum Day {
+\end_layout
+
+\begin_layout Plain Layout
+
+   MONDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   TUESDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   WEDNESDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   THURSDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   FRIDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   SATURDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+   SUNDAY
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos: Interfaces
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphQL permite definir 
+\emph on
+Interfaces
+\emph default
+.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+interface Person {
+\end_layout
+
+\begin_layout Plain Layout
+
+    name: String!
+\end_layout
+
+\begin_layout Plain Layout
+
+    age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+type Director implements Person {
+\end_layout
+
+\begin_layout Plain Layout
+
+    name: String!
+\end_layout
+
+\begin_layout Plain Layout
+
+    age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+    isProducer: Boolean
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+type Actor implements Person {
+\end_layout
+
+\begin_layout Plain Layout
+
+    name: String!
+\end_layout
+
+\begin_layout Plain Layout
+
+    age: Int
+\end_layout
+
+\begin_layout Plain Layout
+
+    appearsIn: [Movie]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sistema de Tipos: Interfaces
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos tener una query que consulte por una lista de personas:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Query {
+\end_layout
+
+\begin_layout Plain Layout
+
+    allDirectorsAndActors: [Person]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Y consultar por información específica de un director:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query {
+\end_layout
+
+\begin_layout Plain Layout
+
+    allDirectorsAndActors {
+\end_layout
+
+\begin_layout Plain Layout
+
+       name
+\end_layout
+
+\begin_layout Plain Layout
+
+       ...
+ on Director {
+\end_layout
+
+\begin_layout Plain Layout
+
+           isProducer
+\end_layout
+
+\begin_layout Plain Layout
+
+       }
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Resolvers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Pero cómo se implementa en el servidor?
+\end_layout
+
+\begin_layout FragileFrame
+Si repasamos los esquemas que hemos visto, cada field tiene asociado un
+ tipo.
+ Un servidor GraphQL tiene un resolver por cada field.
+ Si consideramos a una query como una collección de fields, la tarea del
+ servidor para responder a la petición es invocar cada uno de los resolvers
+ correspondientes a los fields de dicha query.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Por ejemplo, en Python:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+class Query(graphene.ObjectType):     
+\end_layout
+
+\begin_layout Plain Layout
+
+    movies = graphene.List(MovieType)
+\end_layout
+
+\begin_layout Plain Layout
+
+    def resolve_movies(self, info, **kwargs):         
+\end_layout
+
+\begin_layout Plain Layout
+
+        return get_movies_from_db()
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mutations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Hasta acá hemos visto cómo consultar información.
+ Podemos además modificar el estado del servidor con 
+\emph on
+mutations
+\emph default
+.
+\end_layout
+
+\begin_layout FragileFrame
+La sintaxis es similar:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+mutation {
+\end_layout
+
+\begin_layout Plain Layout
+
+    addMovie(name: 
+\begin_inset Quotes fld
+\end_inset
+
+Pulp Fiction
+\begin_inset Quotes frd
+\end_inset
+
+, director: {fullName: 
+\begin_inset Quotes fld
+\end_inset
+
+Quentin Tarantino
+\begin_inset Quotes frd
+\end_inset
+
+}) {
+\end_layout
+
+\begin_layout Plain Layout
+
+         name
+\end_layout
+
+\begin_layout Plain Layout
+
+         ok
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos especificar qué campos retornar.
+ Al igual que en una query, addMovie tiene un tipo asociado.
+ Este tipo puede ser un tipo definido específicamente para esta mutation
+ y los fields que retorna no tienen por qué guardar relación con los campos
+ de entrada.
+\end_layout
+
 \end_body
 \end_document
