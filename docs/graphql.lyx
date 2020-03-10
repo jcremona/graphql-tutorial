@@ -255,7 +255,7 @@ status open
 
 
 \backslash
-begin{lstlisting}[language=json,firstnumber=1]
+begin{lstlisting}[language=json,numbers=none]
 \end_layout
 
 \begin_layout Plain Layout
@@ -493,7 +493,7 @@ status open
 
 
 \backslash
-begin{lstlisting}[language=json,firstnumber=1]
+begin{lstlisting}[language=json,numbers=none]
 \end_layout
 
 \begin_layout Plain Layout
@@ -2698,6 +2698,1252 @@ Podemos especificar qué campos retornar.
  Este tipo puede ser un tipo definido específicamente para esta mutation
  y los fields que retorna no tienen por qué guardar relación con los campos
  de entrada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mutations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Mutation {
+\end_layout
+
+\begin_layout Plain Layout
+
+  addMovie(name: String, director: DirectorInput): AddMovieOutput
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+input DirectorInput {
+\end_layout
+
+\begin_layout Plain Layout
+
+  fullName: String
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+type AddMovieOutput {
+\end_layout
+
+\begin_layout Plain Layout
+
+  name: String
+\end_layout
+
+\begin_layout Plain Layout
+
+  ok: Boolean
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introspection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphQL permite a los clientes hacer consultas para conocer el esquema.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query {
+\end_layout
+
+\begin_layout Plain Layout
+
+    __schema{
+\end_layout
+
+\begin_layout Plain Layout
+
+       types {
+\end_layout
+
+\begin_layout Plain Layout
+
+          name
+\end_layout
+
+\begin_layout Plain Layout
+
+          kind
+\end_layout
+
+\begin_layout Plain Layout
+
+          fields {
+\end_layout
+
+\begin_layout Plain Layout
+
+            name
+\end_layout
+
+\begin_layout Plain Layout
+
+          }
+\end_layout
+
+\begin_layout Plain Layout
+
+       }   
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introspection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphQL permite a los clientes hacer consultas para conocer el esquema.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{  "__schema": {
+\end_layout
+
+\begin_layout Plain Layout
+
+        "types": [
+\end_layout
+
+\begin_layout Plain Layout
+
+            {
+\end_layout
+
+\begin_layout Plain Layout
+
+               "name": "Movie",
+\end_layout
+
+\begin_layout Plain Layout
+
+               "kind": "OBJECT",
+\end_layout
+
+\begin_layout Plain Layout
+
+               "fields": [
+\end_layout
+
+\begin_layout Plain Layout
+
+                 {"name": "name"},
+\end_layout
+
+\begin_layout Plain Layout
+
+                 {"name": "director"},
+\end_layout
+
+\begin_layout Plain Layout
+
+                 {"name": "releaseDate"},
+\end_layout
+
+\begin_layout Plain Layout
+
+                 ...]
+\end_layout
+
+\begin_layout Plain Layout
+
+            },
+\end_layout
+
+\begin_layout Plain Layout
+
+        ...]
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introspection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos consultar información de un tipo específico:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+query {
+\end_layout
+
+\begin_layout Plain Layout
+
+    __type(name: 
+\begin_inset Quotes fld
+\end_inset
+
+String
+\begin_inset Quotes frd
+\end_inset
+
+){
+\end_layout
+
+\begin_layout Plain Layout
+
+       name
+\end_layout
+
+\begin_layout Plain Layout
+
+       kind  
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    "__type": {
+\end_layout
+
+\begin_layout Plain Layout
+
+         "name": "String",
+\end_layout
+
+\begin_layout Plain Layout
+
+         "kind": "SCALAR"     
+\end_layout
+
+\begin_layout Plain Layout
+
+    } 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Subscriptions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Mediante una 
+\emph on
+subscription
+\emph default
+ podemos suscribirnos a un evento, mantener una conexión abierta con el
+ servidor y recibir notificaciones cuando dicho evento ocurra:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+type Subscription {
+\end_layout
+
+\begin_layout Plain Layout
+
+    newMovie: Movie
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=json, numbers=none]
+\end_layout
+
+\begin_layout Plain Layout
+
+subscription {
+\end_layout
+
+\begin_layout Plain Layout
+
+    newMovie {
+\end_layout
+
+\begin_layout Plain Layout
+
+        name
+\end_layout
+
+\begin_layout Plain Layout
+
+        releaseDate
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ejercicios
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Algunos ejercicios...
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+En Python, utilizamos la librería graphene para definir un esquema e implementar
+ el servidor.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+from graphene import ObjectType, String, Field,
+\end_layout
+
+\begin_layout Plain Layout
+
+    List, Int, Schema, Mutation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+class Movie(ObjectType):
+\end_layout
+
+\begin_layout Plain Layout
+
+   name = String(required=True)
+\end_layout
+
+\begin_layout Plain Layout
+
+   duration_in_minutes = Int()
+\end_layout
+
+\begin_layout Plain Layout
+
+   director = Field(Director)
+\end_layout
+
+\begin_layout Plain Layout
+
+   actors = List(Actor)
+\end_layout
+
+\begin_layout Plain Layout
+
+   release_date = String()
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Veamos la implementación de algunos 
+\emph on
+resolvers:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+class Query(ObjectType):
+\end_layout
+
+\begin_layout Plain Layout
+
+  movies = List(Movie)
+\end_layout
+
+\begin_layout Plain Layout
+
+  movie = Field(Movie, name=String(required=True))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  def resolve_movies(self, info):
+\end_layout
+
+\begin_layout Plain Layout
+
+      return get_movies_from_db()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  def resolve_movie(self, info, name):
+\end_layout
+
+\begin_layout Plain Layout
+
+      return get_movie(name) # instance of Movie
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Veamos la implementación de una 
+\emph on
+mutation
+\emph default
+:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+class Mutation(ObjectType):
+\end_layout
+
+\begin_layout Plain Layout
+
+   add_movie = AddMovie.Field()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+class AddMovie(Mutation):
+\end_layout
+
+\begin_layout Plain Layout
+
+   name = String()
+\end_layout
+
+\begin_layout Plain Layout
+
+   ok = Boolean()
+\end_layout
+
+\begin_layout Plain Layout
+
+   class Arguments:
+\end_layout
+
+\begin_layout Plain Layout
+
+        movie = MovieInput()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   def mutate(self, info, movie):
+\end_layout
+
+\begin_layout Plain Layout
+
+        insert_to_db(movie)
+\end_layout
+
+\begin_layout Plain Layout
+
+        return AddMovie(name=movie.name, ok=true)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos retornar errores de la siguiente forma:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+from graphql import GraphQLError
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def mutate(self, info, movie):
+\end_layout
+
+\begin_layout Plain Layout
+
+    try:
+\end_layout
+
+\begin_layout Plain Layout
+
+       insert_to_db(movie)
+\end_layout
+
+\begin_layout Plain Layout
+
+       return AddMovie(name=movie.name, ok=true)
+\end_layout
+
+\begin_layout Plain Layout
+
+    except Exception as e:
+\end_layout
+
+\begin_layout Plain Layout
+
+       raise GraphQLError(
+\begin_inset Quotes fld
+\end_inset
+
+Unable to insert movie
+\begin_inset Quotes frd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+En la respuesta veremos algo similar a este resultado:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  "errors": [
+\end_layout
+
+\begin_layout Plain Layout
+
+     {
+\end_layout
+
+\begin_layout Plain Layout
+
+       "message": "Unable to insert movie",
+\end_layout
+
+\begin_layout Plain Layout
+
+       "locations": [{"line": 2,
+\end_layout
+
+\begin_layout Plain Layout
+
+                      "column": 3}],
+\end_layout
+
+\begin_layout Plain Layout
+
+       "path": ["addMovie"]
+\end_layout
+
+\begin_layout Plain Layout
+
+     }
+\end_layout
+
+\begin_layout Plain Layout
+
+   ]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implementando el server en Python
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Podemos acceder a información contextual y metadata en un 
+\emph on
+resolver
+\emph default
+ mediante el argumento 
+\emph on
+info
+\emph default
+.
+ En este ejemplo consultamos el método HTTP empleado y los headers HTTP
+\emph on
+:
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python]
+\end_layout
+
+\begin_layout Plain Layout
+
+class Query(ObjectType):
+\end_layout
+
+\begin_layout Plain Layout
+
+  movies = List(Movie)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  def resolve_movies(self, info):
+\end_layout
+
+\begin_layout Plain Layout
+
+    method = info.context["request"].method
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(method) # print 
+\begin_inset Quotes fld
+\end_inset
+
+POST
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    headers = info.context["request"].headers
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(headers['host']) # print the hostname
+\end_layout
+
+\begin_layout Plain Layout
+
+    return get_movies_from_db()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+GraphiQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+GraphiQL es una herramienta de interfaz gráfica que permite conectarnos
+ a un servidor durante la etapa de desarrollo y ejecutar queries y mutations.
+ Podemos también consultar el esquema de una forma interactiva.
 \end_layout
 
 \end_body
